@@ -1,7 +1,7 @@
 {
   "name": "better-auth-docs-bot",
   "version": "1.0.0",
-  "description": "Discord bot for answering Better Auth documentation questions",
+  "description": "Discord bot for better auth",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
