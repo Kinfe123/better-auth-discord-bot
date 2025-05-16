@@ -23,16 +23,14 @@ function processMarkdownContent(docs: ApiResponse[]): ProcessedDoc[] {
   }
 
   return docs.map(doc => {
-    // Clean up markdown content
     const cleanDescription = doc.description
       .replace(/\[!code highlight\]/g, '') // Remove code highlight markers
       .replace(/```[\s\S]*?```/g, '') // Remove code blocks from description
       .replace(/`([^`]+)`/g, '$1') // Remove inline code
       .trim();
 
-    // Clean up code
     const cleanCode = doc.code
-      .replace(/\[!code highlight\]/g, '') // Remove code highlight markers
+      .replace(/\[!code highlight\]/g, '') 
       .trim();
 
     return {
@@ -50,7 +48,6 @@ function generateFallbackResponse(docs: ProcessedDoc[]): string {
     return 'I couldn\'t find any relevant information in the documentation for your question. Please try rephrasing your question or check the official Better Auth documentation.';
   }
 
-  // Find the most relevant doc based on title and description
   const mostRelevantDoc = docs[0];
   
   let response = `**${mostRelevantDoc.title}**\n\n`;
@@ -73,7 +70,6 @@ export async function generateAIResponse(
   channelId: string
 ): Promise<string> {
   try {
-    // Process the documentation to clean up markdown and extract code
     const processedDocs = processMarkdownContent(docs);
 
     if (processedDocs.length === 0) {
@@ -81,10 +77,8 @@ export async function generateAIResponse(
     }
 
     try {
-      // Get chat history context
       const chatContext = chatHistory.getContext(userId, channelId);
       
-      // Prepare the context from documentation
       const context = processedDocs.map(doc => `
 Title: ${doc.title}
 Description: ${doc.description}
@@ -106,7 +100,6 @@ Source: ${doc.source}
 8. Focus on practical implementation details and code examples
 9. Consider the conversation history when providing context`;
 
-      // Prepare messages array with chat history
       const messages: OpenAI.Chat.ChatCompletionMessageParam[] = [
         {
           role: "system",
@@ -114,7 +107,6 @@ Source: ${doc.source}
         }
       ];
 
-      // Add chat history context
       chatContext.forEach(msg => {
         messages.push({
           role: msg.role as "user" | "assistant" | "system",
@@ -122,7 +114,6 @@ Source: ${doc.source}
         });
       });
 
-      // Add current query with documentation context
       messages.push({
         role: "user",
         content: `Given the following Better Auth documentation context and user query, provide a helpful response.
@@ -156,7 +147,6 @@ Response:`
         return generateFallbackResponse(processedDocs);
       }
 
-      // Add the response to chat history
       chatHistory.addMessage(userId, channelId, 'assistant', response);
       
       return response;
@@ -164,7 +154,6 @@ Response:`
     } catch (apiError: any) {
       console.error('OpenAI API Error:', apiError);
       
-      // Check if it's a quota/rate limit error
       if (apiError.status === 429 || apiError.code === 'insufficient_quota') {
         console.log('Using fallback response due to API quota/rate limit');
         const fallbackResponse = generateFallbackResponse(processedDocs);
@@ -172,7 +161,7 @@ Response:`
         return fallbackResponse;
       }
       
-      throw apiError; // Re-throw other types of errors
+      throw apiError;
     }
   } catch (error) {
     console.error('Error generating AI response:', error);
