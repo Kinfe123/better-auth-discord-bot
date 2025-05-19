@@ -20,7 +20,6 @@ client.once(Events.ClientReady, (readyClient) => {
 });
 
 client.on(Events.MessageCreate, async (message: Message) => {
-  // Ignore messages from bots
   if (message.author.bot) return;
 
   // Check if the bot is mentioned or if the message starts with !docs
@@ -58,5 +57,5 @@ client.on(Events.MessageCreate, async (message: Message) => {
     await message.reply('Sorry, I encountered an error while processing your request. Please try again later.');
   }
 });
-
+// login using the bot token
 client.login(process.env.BOT_TOKEN); 
