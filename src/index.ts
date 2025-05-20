@@ -22,7 +22,6 @@ client.once(Events.ClientReady, (readyClient) => {
 client.on(Events.MessageCreate, async (message: Message) => {
   if (message.author.bot) return;
 
-  // Check if the bot is mentioned or if the message starts with !docs
   const isMentioned = message.mentions.has(client.user!);
   const isDocsCommand = message.content.toLowerCase().startsWith('!docs');
 
@@ -47,9 +46,7 @@ client.on(Events.MessageCreate, async (message: Message) => {
       await message.reply('I couldn\'t find any relevant information in the documentation for your question.');
       return;
     }
-
-    // Generate AI response
-    const response = await generateAIResponse(question, docs , "asdas", "asdas");
+    const response = await generateAIResponse(question, docs , "currId", "channelId");
     await message.reply(response);
 
   } catch (error) {
