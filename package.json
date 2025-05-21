@@ -1,6 +1,6 @@
 {
-  "name": "better-auth-docs-bot",
-  "version": "1.0.0",
+  "name": "better-auth-docs-discord-bot",
+  "version": "0.0.1",
   "description": "Discord bot for better auth",
   "main": "dist/index.js",
   "scripts": {
