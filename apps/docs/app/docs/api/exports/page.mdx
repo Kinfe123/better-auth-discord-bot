@@ -1,0 +1,22 @@
+---
+title: "Public Exports"
+description: "Reference for choosing the correct public import path for the workflow you are building."
+order: 60
+---
+
+# Public Exports
+
+Reference for choosing the correct public import path for the workflow you are building.
+## What To Import
+Better Auth Docs Discord Bot exposes a few public entrypoints from `better-auth-docs-discord-bot`. Start with the main package for shared helpers, use framework subpaths when mounting the runtime in an app, and use config subpaths when typing or loading runtime configuration.
+## Common Imports
+Use the import reference below to choose the smallest package entrypoint that matches your framework or configuration task.
+## Choose an Import Path
+| Import path | When to use it | Common imports |
+| --- | --- | --- |
+| `better-auth-docs-discord-bot` | Choose this for top-level helpers, shared types, and runtime utilities from Better Auth Docs Discord Bot. | `ApiResponse`, `chatHistory`, `fetchDocs`, `formatResponse`, `generateAIResponse` |
+## How To Decide
+- Choose the main package entrypoint for shared helpers, product-level types, and top-level setup utilities.
+- Choose a framework entrypoint when the import is used inside that framework's route, handler, plugin, or server integration.
+- Choose a configuration entrypoint when the code is reading, validating, or typing the product configuration.
+- If two paths look similar, prefer the narrowest path that matches the file you are editing.
