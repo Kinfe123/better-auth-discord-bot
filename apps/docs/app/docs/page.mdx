@@ -1,0 +1,40 @@
+---
+title: "Better Auth Docs Discord Bot"
+description: "Overview for Better Auth Docs Discord Bot."
+order: 0
+---
+
+# Better Auth Docs Discord Bot
+
+Discord bot for better auth
+## What It Helps You Build
+Better Auth Docs Discord Bot is documented as a messaging product: how the bot connects to its platform, how people ask questions, how the project gathers context, and how a useful answer gets sent back.
+## Start Here
+- [Quickstart](/docs/quickstart) - Run Better Auth Docs Discord Bot for the first time.
+- [Installation](/docs/installation) - Install and configure Better Auth Docs Discord Bot.
+## Documentation Map
+- Get Started: [Better Auth Docs Discord Bot](/docs) - Overview for Better Auth Docs Discord Bot.
+- Get Started: [Quickstart](/docs/quickstart) - Run Better Auth Docs Discord Bot for the first time.
+- Get Started: [Installation](/docs/installation) - Install and configure Better Auth Docs Discord Bot.
+- Configuration: [Configuration](/docs/configuration) - Runtime values, environment variables, deployment settings, and framework configuration.
+- Configuration: [Environment Variables](/docs/configuration/environment) - Environment variables provide runtime secrets, URLs, provider settings, and deployment values.
+- Core Features: [Features](/docs/features) - Product capabilities and workflows readers can use or operate.
+- Core Features: [AI Responses](/docs/features/ai-responses) - AI responses turn retrieved context into a concise answer for the person asking the question.
+- Core Features: [Conversation Memory](/docs/features/conversation-memory) - Conversation memory keeps recent messages so follow-up questions can use nearby context.
+- Core Features: [Documentation Lookup](/docs/features/documentation-lookup) - Documentation lookup finds relevant docs context before the project answers a user question.
+- Core Features: [Messaging Bot](/docs/features/messaging-bot) - The project runs as a messaging bot that listens for chat messages and replies inside a connected platform.
+## Package Details
+- Package name: `better-auth-docs-discord-bot`
+## Core Capabilities
+- Messaging Bot: The bot runtime is the front door for users. It connects to the messaging platform with a token, watches incoming messages, decides which messages should receive a reply, and gives users a response in the same channel or conversation. Key concepts: bot runtime, message events, mentions or commands, platform token.
+- AI Responses: The response step prepares the user question, recent context when available, and retrieved documentation snippets for the configured model provider. It should stay grounded in the provided docs and fall back to a simpler response when the provider is unavailable. Key concepts: model provider, grounded prompt, retrieved context, fallback response.
+- Conversation Memory: Conversation memory is the short-term context layer for chat-style products. It groups recent messages by user, channel, session, or conversation, keeps the history bounded, and expires stale context so answers can be relevant without storing unlimited chat data. Key concepts: recent messages, conversation context, session timeout, bounded history.
+- Documentation Lookup: This workflow turns a user question into usable documentation context. It sends the question to the configured documentation source, parses the returned sections, keeps useful metadata such as titles and source links, and hands the best context to the response step. Key concepts: docs retrieval, query text, source links, code examples.
+## Useful Commands
+- `build`: `tsc` creates the production build or compiled package artifacts.
+- `start`: `node dist/index.js` starts the runtime entrypoint after dependencies or build output are ready.
+- `dev`: `ts-node src/index.ts` starts the local development workflow.
+## Configuration You May Need
+- `BOT_TOKEN` - Bot token used to log the messaging client into the platform.
+- `DISCORD_CLIENT_ID` - Discord application client ID used when configuring or inviting the bot.
+- `OPENAI_API_KEY` - OpenAI API key used when the project generates AI answers from retrieved context.

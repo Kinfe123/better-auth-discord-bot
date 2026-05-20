@@ -1,0 +1,27 @@
+---
+title: "AI Responses"
+description: "AI responses turn retrieved context into a concise answer for the person asking the question."
+order: 60
+---
+
+# AI Responses
+
+AI responses turn retrieved context into a concise answer for the person asking the question.
+## What You Can Do
+The response step prepares the user question, recent context when available, and retrieved documentation snippets for the configured model provider. It should stay grounded in the provided docs and fall back to a simpler response when the provider is unavailable.
+## Key Ideas
+- model provider
+- grounded prompt
+- retrieved context
+- fallback response
+- source links
+## How It Works
+1. Prepare the user question with the documentation context already retrieved.
+2. Ask the configured model provider for a concise answer grounded in that context.
+3. Return the answer with useful references or fall back to the best available docs snippet.
+## Behavior Details
+- A model provider is used after retrieval, so provider credentials must exist before AI answers can run.
+- The runtime chooses a model for the answer-generation step rather than hard-coding the docs response in the command handler.
+- The answer step prepares prompt messages so the model has instructions, retrieved context, and the user's question together.
+- Answers are expected to stay grounded in retrieved documentation rather than inventing unsupported setup guidance.
+- Provider failures should fall back to the best available documentation context so the user still gets a useful response.

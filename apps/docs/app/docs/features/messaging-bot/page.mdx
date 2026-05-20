@@ -1,0 +1,28 @@
+---
+title: "Messaging Bot"
+description: "The project runs as a messaging bot that listens for chat messages and replies inside a connected platform."
+order: 90
+---
+
+# Messaging Bot
+
+The project runs as a messaging bot that listens for chat messages and replies inside a connected platform.
+## What You Can Do
+The bot runtime is the front door for users. It connects to the messaging platform with a token, watches incoming messages, decides which messages should receive a reply, and gives users a response in the same channel or conversation.
+## Key Ideas
+- bot runtime
+- message events
+- mentions or commands
+- platform token
+- reply lifecycle
+## How It Works
+1. Create the bot application in the messaging platform and invite it to the right server or channel.
+2. Set the required bot token and provider credentials before starting the process.
+3. Send a mention, command, or direct message and confirm the bot responds in the same conversation.
+## Runtime Behavior
+- The bot reacts to incoming message events instead of exposing an HTTP page for users.
+- Bot-authored messages are ignored so the app does not answer itself or loop with other bots.
+- Users can ask a docs question with the `!docs` command when that command is present in the runtime.
+- Mention-based questions are supported when the platform event shows that the bot was mentioned.
+- The bot can show typing feedback while it gathers context and prepares the answer.
+- Responses are sent back into the same conversation so the answer stays attached to the user's question.
