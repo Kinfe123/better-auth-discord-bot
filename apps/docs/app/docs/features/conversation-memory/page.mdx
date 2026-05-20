@@ -1,0 +1,26 @@
+---
+title: "Conversation Memory"
+description: "Conversation memory keeps recent messages so follow-up questions can use nearby context."
+order: 70
+---
+
+# Conversation Memory
+
+Conversation memory keeps recent messages so follow-up questions can use nearby context.
+## What You Can Do
+Conversation memory is the short-term context layer for chat-style products. It groups recent messages by user, channel, session, or conversation, keeps the history bounded, and expires stale context so answers can be relevant without storing unlimited chat data.
+## Key Ideas
+- recent messages
+- conversation context
+- session timeout
+- bounded history
+- cleanup
+## How It Works
+1. Store the user question and bot answer under the active conversation.
+2. Include recent history when the next answer depends on what was just discussed.
+3. Expire or clear old history so context stays bounded and privacy-friendly.
+## Behavior Details
+- History is bounded, so only a limited number of recent turns are kept for follow-up context.
+- Old conversations expire or are cleaned up so stale context does not leak into later answers.
+- Conversation state is grouped by user, channel, or conversation so unrelated chats do not share context.
+- The memory layer has explicit operations for adding messages, reading history, and clearing context.

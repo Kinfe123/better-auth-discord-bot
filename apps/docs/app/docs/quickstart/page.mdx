@@ -1,0 +1,30 @@
+---
+title: "Quickstart"
+description: "Run Better Auth Docs Discord Bot with the current scripts and configuration."
+order: 10
+---
+
+# Quickstart
+
+Use this quickstart to move from a fresh checkout to the first workflow that proves Better Auth Docs Discord Bot is configured and usable.
+## Before You Start
+This project uses `bun` as its package manager.
+Environment-backed behavior is present, so configuration is part of the first-run path.
+## First Run Path
+1. Install dependencies with `bun install`.
+2. Copy `.env.example` to `.env` and set the required values.
+3. Run `bun run dev` to exercise the main workflow.
+4. Send a command such as `!docs how do I set this up?` in a test channel.
+## Expected Result
+The bot should acknowledge the question and return a useful answer in the same channel. If it stays silent, check the bot token, platform permissions or intents, and any AI/provider keys listed on the environment page.
+## Useful Commands
+These commands are useful after the first run because they are the repeatable workflows available in the project.
+- `build`: `tsc` creates the production build or compiled package artifacts.
+- `start`: `node dist/index.js` starts the runtime entrypoint after dependencies or build output are ready.
+- `dev`: `ts-node src/index.ts` starts the local development workflow.
+## Next Places to Read
+- [Configuration](/docs/configuration) - Runtime values, environment variables, deployment settings, and framework configuration.
+- [Environment Variables](/docs/configuration/environment) - Environment variables provide runtime secrets, URLs, provider settings, and deployment values.
+- [Features](/docs/features) - Product capabilities and workflows readers can use or operate.
+- [AI Responses](/docs/features/ai-responses) - AI responses turn retrieved context into a concise answer for the person asking the question.
+- [Conversation Memory](/docs/features/conversation-memory) - Conversation memory keeps recent messages so follow-up questions can use nearby context.

@@ -1,0 +1,26 @@
+---
+title: "Environment Variables"
+description: "Environment variables provide runtime secrets, URLs, provider settings, and deployment values."
+order: 40
+---
+
+# Environment Variables
+
+Environment variables provide runtime secrets, URLs, provider settings, and deployment values.
+## What This Controls
+Environment variable documentation explains which runtime values the project expects, where those values are read, what each variable controls, and what developers should verify before running previews, workers, or production deployments.
+## Key Ideas
+- environment variables
+- runtime secrets
+- configuration files
+- deployment values
+## How To Think About Settings
+Configuration is useful only when readers can connect each value to behavior. Start by deciding whether the value affects credentials, persistence, routing, framework integration, output, or developer convenience.
+## Environment Variables
+- `BOT_TOKEN` - Bot token used to log the messaging client into the platform.
+- `DISCORD_CLIENT_ID` - Discord application client ID used when configuring or inviting the bot.
+- `OPENAI_API_KEY` - OpenAI API key used when the project generates AI answers from retrieved context.
+## How To Verify Changes
+- Identify whether the option affects security, runtime mounting, data access, or presentation.
+- Prefer examples that use the same names and defaults found in the project.
+- Call out adapter-specific behavior instead of implying every setting applies to every framework.

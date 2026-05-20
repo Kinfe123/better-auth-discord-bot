@@ -1,0 +1,25 @@
+---
+title: "Documentation Lookup"
+description: "Documentation lookup finds relevant docs context before the project answers a user question."
+order: 80
+---
+
+# Documentation Lookup
+
+Documentation lookup finds relevant docs context before the project answers a user question.
+## What You Can Do
+This workflow turns a user question into usable documentation context. It sends the question to the configured documentation source, parses the returned sections, keeps useful metadata such as titles and source links, and hands the best context to the response step.
+## Key Ideas
+- docs retrieval
+- query text
+- source links
+- code examples
+- empty-result fallback
+## How It Works
+1. Receive a question from the runtime, bot, CLI, or web UI.
+2. Fetch matching documentation sections from the configured docs source.
+3. Keep enough source context for the answer step to explain where the guidance came from.
+## Behavior Details
+- The lookup step calls an external documentation source such as `https://context7.com/api/v1/better-auth/better-auth`.
+- The user question is passed into a lookup function before the answer is generated.
+- Returned docs are shaped into reader-friendly fields such as title, description, source link, language, and code example.

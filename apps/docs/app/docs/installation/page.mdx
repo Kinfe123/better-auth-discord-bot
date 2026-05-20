@@ -1,0 +1,39 @@
+---
+title: "Installation"
+description: "Install and configure Better Auth Docs Discord Bot."
+order: 20
+---
+
+# Installation
+
+Install the project dependencies first, then run the command or package entrypoint that proves Better Auth Docs Discord Bot is usable in this repository.
+## Setup Model
+Installation has three jobs: install the package dependencies, provide the runtime configuration the project documents, and verify the command that exercises the main workflow.
+## What Gets Configured
+- Dependencies provide the framework, CLI, adapters, and runtime libraries used by the project.
+- Environment variables provide documented secrets, URLs, provider tokens, and deployment-specific behavior.
+- Scripts provide repeatable entrypoints for local development, production builds, tests, and release tasks.
+## Create the Bot Application
+- Create the bot or application in the messaging platform before starting the local process.
+- Enable the message access or intent settings required by that platform so the bot can see user questions.
+- Invite the bot into the server, workspace, channel, or chat where you want to test it.
+## Successful Setup Looks Like
+- Dependencies install with the package manager already used by the project.
+- Required environment variables are present before runtime commands are executed.
+- The bot logs in, receives a test message, and replies in the same conversation without undocumented manual steps.
+## Install Dependencies
+Run `bun install` from the project root.
+## Configure Environment Variables
+Copy `.env.example` into `.env` and fill in the required values before running the project.
+- `BOT_TOKEN` - Bot token used to log the messaging client into the platform.
+- `DISCORD_CLIENT_ID` - Discord application client ID used when configuring or inviting the bot.
+- `OPENAI_API_KEY` - OpenAI API key used when the project generates AI answers from retrieved context.
+## Verify the Build or Runtime Command
+The most relevant command detected right now is `bun run dev`.
+After the process is running, send a command such as `!docs how do I set this up?` in a test channel. Confirm it responds with useful context instead of only logging the message.
+## Framework and Adapter Coverage
+No framework-specific adapter or runtime files were found.
+## Useful Commands
+- `build`: `tsc` creates the production build or compiled package artifacts.
+- `start`: `node dist/index.js` starts the runtime entrypoint after dependencies or build output are ready.
+- `dev`: `ts-node src/index.ts` starts the local development workflow.
